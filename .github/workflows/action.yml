@@ -1,0 +1,26 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: pdflatex a
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: a.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: bibtex main
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: a.aux
+          compiler: bibtex
+          args: 
+      - name: pdflatex a
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: a.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
