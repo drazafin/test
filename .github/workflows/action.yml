@@ -12,12 +12,18 @@ jobs:
           root_file: a.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: bibtex main
+      #- name: bibtex main
+      #  uses: dante-ev/latex-action@latest
+      # with:
+      #   root_file: a.aux
+      #   compiler: bibtex
+      #   args: 
+      - name: pdflatex a
         uses: dante-ev/latex-action@latest
         with:
-          root_file: a.aux
-          compiler: bibtex
-          args: 
+          root_file: a.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
       - name: pdflatex a
         uses: dante-ev/latex-action@latest
         with:
