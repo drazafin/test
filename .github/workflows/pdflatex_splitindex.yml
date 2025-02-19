@@ -18,13 +18,19 @@ jobs:
       #   root_file: a.aux
       #   compiler: bibtex
       #   args: 
-      - name: pdflatex a
+      - name: pdflatex
         uses: dante-ev/latex-action@latest
         with:
           root_file: a.tex
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: pdflatex a
+      - name: splitindex
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: a.tex
+          compiler: splitindex
+          args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex
         uses: dante-ev/latex-action@latest
         with:
           root_file: a.tex
